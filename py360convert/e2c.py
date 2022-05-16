@@ -3,7 +3,7 @@ import numpy as np
 from . import utils
 
 
-def e2c(e_img, face_w=256, mode='bilinear', cube_format='dice'):
+def e2c(e_img, face_w=None, mode='bilinear', cube_format='dict'):
     '''
     e_img:  ndarray in shape of [H, W, *]
     face_w: int, the length of each face of the cubemap
@@ -16,6 +16,8 @@ def e2c(e_img, face_w=256, mode='bilinear', cube_format='dice'):
         order = 0
     else:
         raise NotImplementedError('unknown mode')
+    if(not face_w):
+        face_w = w//4
 
     xyz = utils.xyzcube(face_w)
     uv = utils.xyz2uv(xyz)
