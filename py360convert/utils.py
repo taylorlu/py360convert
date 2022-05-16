@@ -27,7 +27,7 @@ def xyzcube(face_w):
     out[:, 3*face_w:4*face_w, 0] = -0.5
 
     # Up face (y = 0.5)
-    out[:, 4*face_w:5*face_w, [0, 2]] = np.flip(grid, axis=1)
+    out[:, 4*face_w:5*face_w, [0, 2]] = np.flip(grid, axis=0)
     out[:, 4*face_w:5*face_w, 1] = 0.5
 
     # Down face (y = -0.5)
