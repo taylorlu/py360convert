@@ -1,5 +1,5 @@
 import numpy as np
-import cupy as cp
+
 from . import utils
 
 
@@ -31,8 +31,6 @@ def e2p(e_img, fov_deg, u_deg, v_deg, out_hw, in_rot_deg=0, mode='bilinear'):
     xyz = utils.xyzpers(h_fov, v_fov, u, v, out_hw, in_rot)
     uv = utils.xyz2uv(xyz)
     coor_xy = utils.uv2coor(uv, h, w)
-    coor_xy = cp.asnumpy(coor_xy)
-    e_img = cp.asnumpy(e_img)
 
     pers_img = np.stack([
         utils.sample_equirec(e_img[..., i], coor_xy, order=order)
